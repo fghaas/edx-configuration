@@ -50,12 +50,19 @@ EDXAPP_AWS_STORAGE_BUCKET_NAME: "SET-ME-PLEASE (ex. bucket-name)"
 # file system for storage. Setting this to a bucket-name will use AWS
 EDXAPP_IMPORT_EXPORT_BUCKET: ""
 EDXAPP_AWS_S3_CUSTOM_DOMAIN: "SET-ME-PLEASE (ex. bucket-name.s3.amazonaws.com)"
+# Configuration options understood only by
+# storages.backends.s3boto.S3BotoStorage (deprecated)
 EDXAPP_AWS_S3_HOST: "None"
 EDXAPP_AWS_S3_PORT: "None"
 EDXAPP_AWS_S3_CALLING_FORMAT: "None"
 EDXAPP_AWS_S3_SECURE_URLS: "None"
 EDXAPP_AWS_S3_USE_SSL: "None"
 EDXAPP_AWS_AUTO_CREATE_BUCKET: "None"
+# Configuration options understood only by
+# storages.backends.s3boto3.S3Boto3Storage
+EDXAPP_AWS_S3_ENDPOINT_URL: "None"
+EDXAPP_AWS_S3_ADDRESSING_STYLE: "None"
+
 EDXAPP_SWIFT_USERNAME: !!null
 EDXAPP_SWIFT_KEY: !!null
 EDXAPP_SWIFT_TENANT_ID: !!null
@@ -1191,6 +1198,8 @@ edxapp_generic_auth_config:  &edxapp_generic_auth
   AWS_S3_SECURE_URLS: "{{ EDXAPP_AWS_S3_SECURE_URLS }}"
   AWS_S3_USE_SSL: "{{ EDXAPP_AWS_S3_USE_SSL }}"
   AWS_AUTO_CREATE_BUCKET: "{{ EDXAPP_AWS_AUTO_CREATE_BUCKET }}"
+  AWS_S3_ENDPOINT_URL: "{{ EDXAPP_AWS_S3_ENDPOINT_URL }}"
+  AWS_S3_ADDRESSING_STYLE: "{{ EDXAPP_AWS_S3_ADDRESSING_STYLE }}"
   SWIFT_USERNAME: "{{ EDXAPP_SWIFT_USERNAME }}"
   SWIFT_KEY: "{{ EDXAPP_SWIFT_KEY }}"
   SWIFT_TENANT_ID: "{{ EDXAPP_SWIFT_TENANT_ID }}"
