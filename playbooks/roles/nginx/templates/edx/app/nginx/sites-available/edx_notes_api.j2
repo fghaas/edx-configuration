@@ -11,11 +11,11 @@ upstream {{ edx_notes_api_service_name }}_app_server {
 }
 
 server {
-  listen {{ edx_notes_api_nginx_port }} {{ default_site }};
+  listen [::]:{{ edx_notes_api_nginx_port }} ipv6only=off {{ default_site }};
 
   {% if NGINX_ENABLE_SSL %}
 
-  listen {{ edx_notes_api_ssl_nginx_port }} ssl;
+  listen [::]:{{ edx_notes_api_ssl_nginx_port }} ipv6only=off ssl;
 
   ssl_certificate /etc/ssl/certs/{{ NGINX_SSL_CERTIFICATE|basename }};
   ssl_certificate_key /etc/ssl/private/{{ NGINX_SSL_KEY|basename }};

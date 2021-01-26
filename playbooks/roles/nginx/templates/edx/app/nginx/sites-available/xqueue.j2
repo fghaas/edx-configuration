@@ -5,10 +5,10 @@ upstream xqueue_app_server {
 }
 
 server {
-  listen {{ XQUEUE_NGINX_PORT }} default_server;
+  listen [::]:{{ XQUEUE_NGINX_PORT }} ipv6only=off default_server;
 
   {% if NGINX_ENABLE_SSL %}
-  listen {{ XQUEUE_NGINX_SSL_PORT }} ssl;
+  listen [::]:{{ XQUEUE_NGINX_SSL_PORT }} ipv6only=off ssl;
 
   {% include "common-settings.j2" %}
 

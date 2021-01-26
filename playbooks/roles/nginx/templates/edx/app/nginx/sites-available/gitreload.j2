@@ -5,7 +5,7 @@ upstream gitreload_app_server {
 }
 
 server {
-  listen {{ GITRELOAD_NGINX_PORT }} default_server;
+  listen [::]:{{ GITRELOAD_NGINX_PORT }} ipv6only=off default_server;
 
   location / {
      auth_basic            "Restricted";

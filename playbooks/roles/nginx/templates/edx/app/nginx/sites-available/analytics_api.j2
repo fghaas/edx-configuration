@@ -5,7 +5,7 @@ upstream analytics_api_app_server {
 }
 
 server {
-  listen {{ ANALYTICS_API_NGINX_PORT }} default_server;
+  listen [::]:{{ ANALYTICS_API_NGINX_PORT }} ipv6only=off default_server;
 
   # Nginx does not support nested condition or or conditions so
   # there is an unfortunate mix of conditonals here.

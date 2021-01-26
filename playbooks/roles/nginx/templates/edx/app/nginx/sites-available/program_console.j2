@@ -5,7 +5,7 @@
 {%- endif -%}
 
 server {
-  listen {{ PROGRAM_CONSOLE_NGINX_PORT }} {{ default_site }};
+  listen [::]:{{ PROGRAM_CONSOLE_NGINX_PORT }} ipv6only=off {{ default_site }};
   server_name ~^((stage|prod)-)?program-console.*;
 
   {% include "handle-tls-redirect-and-ip-disclosure.j2" %}
@@ -17,7 +17,7 @@ server {
 }
 
 server {
-  listen {{ PROGRAM_CONSOLE_SSL_NGINX_PORT }} ssl;
+  listen [::]:{{ PROGRAM_CONSOLE_SSL_NGINX_PORT }} ipv6only=off ssl;
   server_name ~^((stage|prod)-)?program-console.*;
   ssl_certificate /etc/ssl/certs/wildcard.sandbox.edx.org.pem;
   ssl_certificate_key /etc/ssl/private/wildcard.sandbox.edx.org.key;

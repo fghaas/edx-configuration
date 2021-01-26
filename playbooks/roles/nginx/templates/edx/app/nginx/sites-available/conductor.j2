@@ -25,7 +25,7 @@ server {
   add_header Strict-Transport-Security "max-age={{ NGINX_HSTS_MAX_AGE }}";
   {% endif %}
 
-  listen {{ CONDUCTOR_NGINX_PORT }} {{ default_site }};
+  listen [::]:{{ CONDUCTOR_NGINX_PORT }} ipv6only=off {{ default_site }};
 
   # Redirects using the client port instead of the port the service is running
   # on. This prevents redirects to the local 8000 port.

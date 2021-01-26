@@ -5,10 +5,10 @@
 {%- endif -%}
 
 server {
-  listen {{ REDIRECT_NGINX_PORT }} {{ default_site }};
+  listen [::]:{{ REDIRECT_NGINX_PORT }} ipv6only=off {{ default_site }};
 
   {% if "ssl" in item.value and item.value['ssl'] == true -%}
-  listen {{ REDIRECT_SSL_NGINX_PORT }} {{ default_site }} ssl;
+  listen [::]:{{ REDIRECT_SSL_NGINX_PORT }} {{ default_site }} ipv6only=off ssl;
   ssl_certificate /etc/ssl/certs/{{ NGINX_SSL_CERTIFICATE|basename }};
   ssl_certificate_key /etc/ssl/private/{{ NGINX_SSL_KEY|basename }};
   {% endif -%}

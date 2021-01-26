@@ -14,7 +14,7 @@ upstream grafana_app_server {
 
 server {
   server_name grafana.*;
-  listen {{ GRAFANA_NGINX_PORT }} {{ default_site }};
+  listen [::]:{{ GRAFANA_NGINX_PORT }} ipv6only=off {{ default_site }};
   client_max_body_size 1M;
   keepalive_timeout 5;
 

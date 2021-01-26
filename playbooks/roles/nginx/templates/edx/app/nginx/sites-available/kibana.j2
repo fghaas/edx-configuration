@@ -13,14 +13,14 @@ server {
 
   {% if NGINX_ENABLE_SSL %}
 
-  listen {{ KIBANA_NGINX_PORT }} {{ default_site }};
-  listen {{ KIBANA_SSL_NGINX_PORT }} {{ default_site }} ssl;
+  listen [::]:{{ KIBANA_NGINX_PORT }} ipv6only=off {{ default_site }};
+  listen [::]:{{ KIBANA_SSL_NGINX_PORT }} {{ default_site }} ipv6only=off ssl;
 
   ssl_certificate /etc/ssl/certs/{{ NGINX_SSL_CERTIFICATE|basename }};
   ssl_certificate_key /etc/ssl/private/{{ NGINX_SSL_KEY|basename }};
 
   {% else %}
-  listen {{ KIBANA_NGINX_PORT }} {{ default_site }};
+  listen [::]:{{ KIBANA_NGINX_PORT }} ipv6only=off {{ default_site }};
   {% endif %}
   
   {% include "handle-tls-redirect-and-ip-disclosure.j2" %}

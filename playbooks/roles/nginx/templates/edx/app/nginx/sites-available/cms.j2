@@ -52,11 +52,11 @@ error_page {{ k }} {{ v }};
 
 {% include "empty_json.j2" %}
 
-  listen {{ EDXAPP_CMS_NGINX_PORT }} {{ default_site }};
+  listen [::]:{{ EDXAPP_CMS_NGINX_PORT }} ipv6only=off {{ default_site }};
 
   {% if NGINX_ENABLE_SSL %}
 
-  listen {{ EDXAPP_CMS_SSL_NGINX_PORT }} ssl;
+  listen [::]:{{ EDXAPP_CMS_SSL_NGINX_PORT }} ipv6only=off ssl;
 
   ssl_certificate /etc/ssl/certs/{{ NGINX_SSL_CERTIFICATE|basename }};
   ssl_certificate_key /etc/ssl/private/{{ NGINX_SSL_KEY|basename }};

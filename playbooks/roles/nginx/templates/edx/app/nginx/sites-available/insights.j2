@@ -18,10 +18,10 @@ map $http_origin $cors_origin {
 }
 
 server {
-  listen {{ INSIGHTS_NGINX_PORT }} default_server;
+  listen [::]:{{ INSIGHTS_NGINX_PORT }} ipv6only=off default_server;
 
   {% if NGINX_ENABLE_SSL %}
-  listen {{ INSIGHTS_NGINX_SSL_PORT }} ssl;
+  listen [::]:{{ INSIGHTS_NGINX_SSL_PORT }} ipv6only=off ssl;
 
   {% include "common-settings.j2" %}
 

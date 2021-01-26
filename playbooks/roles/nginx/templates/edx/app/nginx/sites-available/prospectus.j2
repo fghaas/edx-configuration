@@ -12,7 +12,7 @@ server {
 
   {% if NGINX_ENABLE_SSL %}
 
-  listen {{ prospectus_ssl_nginx_port }} ssl;
+  listen [::]:{{ prospectus_ssl_nginx_port }} ipv6only=off ssl;
 
   ssl_certificate /etc/ssl/certs/{{ NGINX_SSL_CERTIFICATE|basename }};
   ssl_certificate_key /etc/ssl/private/{{ NGINX_SSL_KEY|basename }};
@@ -28,7 +28,7 @@ server {
   proxy_intercept_errors on;
   {% endif %}
 
-  listen {{ PROSPECTUS_NGINX_PORT }} {{ default_site }};
+  listen [::]:{{ PROSPECTUS_NGINX_PORT }} ipv6only=off {{ default_site }};
 
   root {{ PROSPECTUS_DATA_DIR }};
 
@@ -138,7 +138,7 @@ server {
 
   {% if NGINX_ENABLE_SSL %}
 
-  listen {{ prospectus_ssl_nginx_port }} ssl;
+  listen [::]:{{ prospectus_ssl_nginx_port }} ipv6only=off ssl;
 
   ssl_certificate /etc/ssl/certs/{{ NGINX_SSL_CERTIFICATE|basename }};
   ssl_certificate_key /etc/ssl/private/{{ NGINX_SSL_KEY|basename }};
@@ -154,7 +154,7 @@ server {
   proxy_intercept_errors on;
   {% endif %}
 
-  listen {{ PROSPECTUS_NGINX_PORT }} {{ default_site }};
+  listen [::]:{{ PROSPECTUS_NGINX_PORT }} ipv6only=off {{ default_site }};
 
   root {{ PROSPECTUS_DATA_DIR }};
 

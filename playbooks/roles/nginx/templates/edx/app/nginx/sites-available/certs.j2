@@ -1,5 +1,5 @@
 server {
-  listen {{ CERTS_NGINX_PORT }} default_server;
+  listen [::]:{{ CERTS_NGINX_PORT }} ipv6only=off default_server;
 
   location / {
     root {{ CERTS_WEB_ROOT }};
